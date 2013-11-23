@@ -9,7 +9,6 @@ public class Server {
 	public static void main(String[] args) {
 		System.out.println("I'm the server");
 		
-
 		Thread serveurListeningThread = null;
 		try {
 			serveurListeningThread = new Thread(new Serveur(PORT_CONNEXION));
@@ -19,7 +18,6 @@ public class Server {
 		}
 		
 		serveurListeningThread.start();
-		
 		
 		
 	}
