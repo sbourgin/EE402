@@ -17,4 +17,5 @@ public class Services {
 		return _contactsManager.loginContact(parContact);
 	}
 	
+	
 }

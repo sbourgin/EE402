@@ -12,6 +12,13 @@ public class ContactsManager {
 	public boolean logonContact(Contact parContact) {
 		// check si on utilise bien l'equal car sinon les deux objets sont
 		// différents
+		
+		if(_registerContacts.contains(parContact)) {
+			int locIndex = _registerContacts.indexOf(parContact);
+			Contact locContact = _registerContacts.get(locIndex);
+			locContact.setIsLogged(true);
+		}
+		
 		return (_registerContacts.contains(parContact));
 
 	}
@@ -22,6 +29,16 @@ public class ContactsManager {
 		} else {
 			return null;
 		}
+	}
+	
+	public void logOutContact(Contact parContact) {
+		if(_registerContacts.contains(parContact)) {
+			int locIndex = _registerContacts.indexOf(parContact);
+			Contact locContact = _registerContacts.get(locIndex);
+			locContact.setIsLogged(false);
+		}
+		
+		
 	}
  
 }

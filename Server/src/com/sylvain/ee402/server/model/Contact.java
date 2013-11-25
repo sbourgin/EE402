@@ -4,6 +4,7 @@ public class Contact {
 
 	private String _userName;
 	private String _password;
+	private boolean _isLogged;
 
 	public Contact(String _userName, String _password) {
 		super();
@@ -54,6 +55,14 @@ public class Contact {
 		} else if (!_userName.equals(other._userName))
 			return false;
 		return true;
+	}
+
+	public boolean isLogged() {
+		return _isLogged;
+	}
+
+	public void setIsLogged(boolean _isLogged) {
+		this._isLogged = _isLogged;
 	}
 
 	
