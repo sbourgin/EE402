@@ -23,4 +23,39 @@ public class Contact {
 		return _userName;
 	}
 
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result
+				+ ((_password == null) ? 0 : _password.hashCode());
+		result = prime * result
+				+ ((_userName == null) ? 0 : _userName.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Contact other = (Contact) obj;
+		if (_password == null) {
+			if (other._password != null)
+				return false;
+		} else if (!_password.equals(other._password))
+			return false;
+		if (_userName == null) {
+			if (other._userName != null)
+				return false;
+		} else if (!_userName.equals(other._userName))
+			return false;
+		return true;
+	}
+
+	
+	
 }
