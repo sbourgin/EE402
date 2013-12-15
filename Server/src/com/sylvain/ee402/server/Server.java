@@ -27,4 +27,6 @@ public class Server {
 
 //Concept mail box, donc ça va bien dans les deux mails box (destinataire et emmeteur)
 // Sérialiser objet, pas de string comme ça
-// Un message à une priorité visiblement
+
+
+//Creer par défaut des users avec MDP
