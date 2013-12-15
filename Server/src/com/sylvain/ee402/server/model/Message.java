@@ -7,12 +7,12 @@ import com.sylvain.ee402.server.model.Importance;
 public class Message {
 
 	private String _message;
-	private Timestamp _sendTime;
+	private Long _sendTime;
 	private Contact _sender;
 	private Contact _destination;
 	private Importance _importance;
 	
-	public Message(String _message, Timestamp _sendTime, Contact _sender,
+	public Message(String _message, Long _sendTime, Contact _sender,
 			Contact _destination, Importance parImportance) {
 		super();
 		this._message = _message;
@@ -26,7 +26,7 @@ public class Message {
 		return _message;
 	}
 
-	public Timestamp get_sendTime() {
+	public Long get_sendTime() {
 		return _sendTime;
 	}
 

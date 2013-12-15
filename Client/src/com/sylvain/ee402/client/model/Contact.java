@@ -10,7 +10,6 @@ public class Contact implements Serializable{
 	private static final long serialVersionUID = 2241167428470668837L;
 	private String _userName;
 	private String _password;
-	private boolean _isLogged;
 
 	public Contact(String _userName, String _password) {
 		super();
@@ -62,15 +61,6 @@ public class Contact implements Serializable{
 			return false;
 		return true;
 	}
-
-	public boolean isLogged() {
-		return _isLogged;
-	}
-
-	public void setIsLogged(boolean _isLogged) {
-		this._isLogged = _isLogged;
-	}
-
 	
 	
 }
