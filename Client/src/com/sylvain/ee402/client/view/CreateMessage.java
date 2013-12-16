@@ -37,7 +37,7 @@ public class CreateMessage extends JFrame {
 		_JFrameBack = parJFrameBack;
 
 		JLabel _to = new JLabel("To");
-		final JComboBox _contacts = new JComboBox(Importance.values()); //TODO Appel WS list contacts
+		final JComboBox _contacts = new JComboBox(Importance.values()); //TODO Appel WS list contacts getListContacts
 		JLabel _importanceLabel = new JLabel("Importance");
 		
 		final JComboBox _importanceSelector = new JComboBox(Importance.values());
@@ -69,7 +69,7 @@ public class CreateMessage extends JFrame {
 						ApplicationController.getInstance().getLogInContact(), (Contact) _contacts.getSelectedItem(), (Importance)_importanceSelector.getSelectedItem());
 				
 				
-				//TODO appel WS svg message + popup ça a marché ?
+				//TODO appel WS svg message + popup ça a marché ? sendMessage
 			}
 
 		});

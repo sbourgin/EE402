@@ -7,15 +7,9 @@ public class Services {
 	private ContactsManager _contactsManager;
 	
 	
-	public boolean logonUser(Contact parContact) {
-		
-		return _contactsManager.logonContact(parContact);
-		
-	}
 	
-	public Contact loginContact (Contact parContact) {
-		return _contactsManager.loginContact(parContact);
-	}
+	
+	
 	
 	
 }

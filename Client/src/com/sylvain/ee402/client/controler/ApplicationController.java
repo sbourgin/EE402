@@ -24,7 +24,7 @@ public class ApplicationController {
 	// TODO
 	public boolean logIn(Contact parContact) {
 		
-		//TODO Appel WebService pour checker si ok Contact
+		//TODO Appel WebService pour checker si ok Contact logInOrCreateUser
 		return true;
 	}
 

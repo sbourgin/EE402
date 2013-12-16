@@ -1,11 +1,16 @@
 package com.sylvain.ee402.server.model;
 
+import java.util.LinkedList;
+import java.util.List;
+
 public class Contact {
 
 	private String _userName;
 	private String _password;
-	private boolean _isLogged;
-
+	private boolean _isLogged = false;
+	private List<Message> _inbox = new LinkedList<Message>();
+	private List<Message> _sendBox = new LinkedList<Message>();
+	
 	public Contact(String _userName, String _password) {
 		super();
 		this._userName = _userName;
@@ -16,12 +21,28 @@ public class Contact {
 		return _password;
 	}
 
-	public void set_password(String _password) {
+	public void setPassword(String _password) {
 		this._password = _password;
 	}
 
-	public String get_userName() {
+	public String getUserName() {
 		return _userName;
+	}
+	
+	public void addMessageToInbox(Message parMessage) {
+		_inbox.add(_inbox.size(), parMessage);
+	}
+	
+	public void addMessageToSendBox(Message parMessage) {
+		_sendBox.add(_sendBox.size(), parMessage);
+	}
+	
+	public List<Message> getAllMessagesInInbox() {
+		return _inbox;
+	}
+	
+	public List<Message> getAllMessagesInSendBox() {
+		return _sendBox;
 	}
 
 	@Override
