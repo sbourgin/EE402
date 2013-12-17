@@ -8,7 +8,6 @@ import javax.swing.JFrame;
 import javax.swing.JTextField;
 
 import com.sylvain.ee402.client.controler.ApplicationController;
-import com.sylvain.ee402.client.model.Contact;
 
 @SuppressWarnings("serial")
 public class Application extends JFrame {
@@ -27,7 +26,7 @@ public class Application extends JFrame {
 		_signInButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
-				if(ApplicationController.getInstance().logIn(new Contact(_userName.getText(), _passWord.getText()))) {
+				if(ApplicationController.getInstance().logIn(_userName.getText(), _passWord.getText())) {
 					setVisible(false);
 					new Menu();
 				}

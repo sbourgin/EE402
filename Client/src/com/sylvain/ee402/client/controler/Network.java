@@ -13,7 +13,6 @@ import java.net.Socket;
 import java.util.List;
 
 import com.sylvain.ee402.client.common.Commands;
-import com.sylvain.ee402.client.model.Contact;
 
 public class Network {
         
@@ -49,14 +48,14 @@ public class Network {
     }
 
     public Object sentCommand(Commands parCommand) {
-    	List<Contact> response = null;
+    	List<String> response = null;
             System.out.println("01. -> Sending Command (" + parCommand + ") to the server...");
             this.send(parCommand.toString());
             
             //Pour get list contacts :
             
             try{
-            		response = (List<Contact>) receive();
+            		response = (List<String>) receive();
                     System.out.println("05. <- The Server responded with: ");
                     System.out.println(" <- " + response);
             }

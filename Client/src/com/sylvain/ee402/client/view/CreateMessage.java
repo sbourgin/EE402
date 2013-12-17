@@ -14,7 +14,6 @@ import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
 import com.sylvain.ee402.client.controler.ApplicationController;
-import com.sylvain.ee402.client.model.Contact;
 import com.sylvain.ee402.client.model.Importance;
 import com.sylvain.ee402.client.model.Message;
 
@@ -66,7 +65,7 @@ public class CreateMessage extends JFrame {
 	
 				
 				Message locMessage = new Message(_textArea.getText(), System.currentTimeMillis(),
-						ApplicationController.getInstance().getLogInContact(), (Contact) _contacts.getSelectedItem(), (Importance)_importanceSelector.getSelectedItem());
+						ApplicationController.getInstance().getLogInUserName(), (String) _contacts.getSelectedItem(), (Importance)_importanceSelector.getSelectedItem());
 				
 				
 				//TODO appel WS svg message + popup ça a marché ? sendMessage
