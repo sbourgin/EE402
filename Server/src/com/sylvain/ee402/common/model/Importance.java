@@ -1,4 +1,4 @@
-package com.sylvain.ee402.server.model;
+package com.sylvain.ee402.common.model;
 
 public enum Importance {
 	HIGH,

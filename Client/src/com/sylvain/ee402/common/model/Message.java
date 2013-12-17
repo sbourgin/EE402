@@ -1,7 +1,6 @@
-package com.sylvain.ee402.client.model;
+package com.sylvain.ee402.common.model;
 
 import java.io.Serializable;
-import java.sql.Timestamp;
 
 public class Message implements Serializable {
 

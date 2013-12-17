@@ -1,19 +1,21 @@
-package com.sylvain.ee402.server.model;
+package com.sylvain.ee402.common.model;
 
-import java.sql.Timestamp;
+import java.io.Serializable;
 
-import com.sylvain.ee402.server.model.Importance;
+public class Message implements Serializable {
 
-public class Message {
-
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -4442908046273373672L;
 	private String _message;
 	private Long _sendTime;
-	private Contact _sender;
-	private Contact _destination;
+	private String _sender;
+	private String _destination;
 	private Importance _importance;
-	
-	public Message(String _message, Long _sendTime, Contact _sender,
-			Contact _destination, Importance parImportance) {
+
+	public Message(String _message, Long _sendTime, String _sender,
+			String _destination, Importance parImportance) {
 		super();
 		this._message = _message;
 		this._sendTime = _sendTime;
@@ -30,11 +32,11 @@ public class Message {
 		return _sendTime;
 	}
 
-	public Contact get_sender() {
+	public String get_sender() {
 		return _sender;
 	}
 
-	public Contact get_destination() {
+	public String get_destination() {
 		return _destination;
 	}
 	

@@ -5,8 +5,8 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 
+import com.sylvain.ee402.common.model.Message;
 import com.sylvain.ee402.server.model.Contact;
-import com.sylvain.ee402.server.model.Message;
 
 public class ContactsManager {
 
@@ -43,11 +43,11 @@ public class ContactsManager {
 
 	public void sendMessage(Message parMessage) {
 		
-		Contact locSender = _registerContacts.get(parMessage.get_sender().getUserName());
+		Contact locSender = _registerContacts.get(parMessage.get_sender());
 		locSender.addMessageToSendBox(parMessage);
 		
-		Contact locReceiver = _registerContacts.get(parMessage.get_destination().getUserName());
-		locReceiver.addMessageToInbox(parMessage);//TODO Ajouter qqpart la gestion des leds
+		Contact locReceiver = _registerContacts.get(parMessage.get_destination());
+		locReceiver.addMessageToInbox(parMessage);
 		
 	}
 

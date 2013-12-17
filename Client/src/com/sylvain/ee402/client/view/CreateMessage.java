@@ -14,8 +14,10 @@ import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
 import com.sylvain.ee402.client.controler.ApplicationController;
-import com.sylvain.ee402.client.model.Importance;
-import com.sylvain.ee402.client.model.Message;
+import com.sylvain.ee402.common.model.Commands;
+import com.sylvain.ee402.common.model.Importance;
+import com.sylvain.ee402.common.model.Message;
+import com.sylvain.ee402.common.model.NetworkMessage;
 
 @SuppressWarnings("serial")
 public class CreateMessage extends JFrame {
@@ -67,7 +69,9 @@ public class CreateMessage extends JFrame {
 				Message locMessage = new Message(_textArea.getText(), System.currentTimeMillis(),
 						ApplicationController.getInstance().getLogInUserName(), (String) _contacts.getSelectedItem(), (Importance)_importanceSelector.getSelectedItem());
 				
+
 				
+				ApplicationController.getInstance().sentMessage(locMessage);
 				//TODO appel WS svg message + popup ça a marché ? sendMessage
 			}
 

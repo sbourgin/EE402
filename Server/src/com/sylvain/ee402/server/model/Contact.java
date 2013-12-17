@@ -3,6 +3,8 @@ package com.sylvain.ee402.server.model;
 import java.util.LinkedList;
 import java.util.List;
 
+import com.sylvain.ee402.common.model.Message;
+
 public class Contact {
 
 	private String _userName;

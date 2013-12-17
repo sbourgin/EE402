@@ -2,7 +2,9 @@ package com.sylvain.ee402.client.controler;
 
 import java.util.List;
 
-import com.sylvain.ee402.client.common.Commands;
+import com.sylvain.ee402.common.model.Commands;
+import com.sylvain.ee402.common.model.Message;
+import com.sylvain.ee402.common.model.NetworkMessage;
 
 public class ApplicationController {
 	private static volatile ApplicationController _instance = null;
@@ -26,8 +28,10 @@ public class ApplicationController {
 
 	// TODO
 	public boolean logIn(String parContactUserName, String parPassword) {
-
+		
 		// TODO Appel WebService pour checker si ok Contact logInOrCreateUser
+		//_logInUserName = parContactUserName; //TODO remettre
+		_logInUserName = "Cil";//TODO enlever
 		return true;
 	}
 	
@@ -38,8 +42,15 @@ public class ApplicationController {
 	
 
 	public List<String> getListContacts() {
-		List<String> locContacts = (List<String>) _network.sentCommand(Commands.GET_LIST_CONTACTS);
-		return locContacts;
+		NetworkMessage locNetworkMessage = new NetworkMessage(Commands.GET_LIST_CONTACTS, null);
+		return (List<String>) _network.sentCommand(locNetworkMessage);
+		
+	}
+	
+	public Boolean sentMessage(Message parMessage) {
+		NetworkMessage locNetworkMessage = new NetworkMessage(Commands.SEND_MESSAGE, parMessage);
+		return  (Boolean) _network.sentCommand(locNetworkMessage);
+		
 	}
 
 }

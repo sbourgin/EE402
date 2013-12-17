@@ -10,7 +10,9 @@ import java.io.ObjectOutputStream;
 import java.net.Socket;
 import java.util.List;
 
-import com.sylvain.ee402.server.model.Contact;
+import com.sylvain.ee402.common.model.Commands;
+import com.sylvain.ee402.common.model.Message;
+import com.sylvain.ee402.common.model.NetworkMessage;
 
 public class ThreadedConnectionHandler extends Thread
 {
@@ -42,11 +44,12 @@ public class ThreadedConnectionHandler extends Thread
 
     // Receive and process incoming string commands from client socket
     private boolean readCommand() {
-        String s = null;
+        NetworkMessage s = null;
         try {
-            s = (String) is.readObject();
+            s = (NetworkMessage) is.readObject();
         }
         catch (Exception e){ // catch a general exception
+        	e.printStackTrace();
                 this.closeSocket();
             return false;
         }
@@ -54,19 +57,24 @@ public class ThreadedConnectionHandler extends Thread
         
         // At this point there is a valid String object
         // invoke the appropriate function based on the command
-        if (s.equalsIgnoreCase("GET_LIST_CONTACTS")){
+        if (s.getCommand().equals(Commands.GET_LIST_CONTACTS)){
             this.getListContacts();
-        }
-        else {
+        } else if (s.getCommand().equals(Commands.SEND_MESSAGE)) {
+        	this.sendMessage((Message) s.getMessage());
+        } else {
             this.sendError("Invalid command: " + s);
         }
         return true;
     }
 
-    // Use our custom DateTimeService Class to get the date and time
-    private void getListContacts() {        // use the date service to get the date
+    private void getListContacts() {        
         List<String> locContacts = _services.getListContacts();
         this.send(locContacts);
+    }
+    
+    private void sendMessage(Message parMessage) {
+    	_services.sendMessage(parMessage);
+    	this.send(new Boolean(true));
     }
 
     // Send a generic object back to the client

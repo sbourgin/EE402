@@ -12,7 +12,8 @@ import java.io.ObjectOutputStream;
 import java.net.Socket;
 import java.util.List;
 
-import com.sylvain.ee402.client.common.Commands;
+import com.sylvain.ee402.common.model.Commands;
+import com.sylvain.ee402.common.model.NetworkMessage;
 
 public class Network {
         
@@ -47,15 +48,15 @@ public class Network {
                 return true;
     }
 
-    public Object sentCommand(Commands parCommand) {
-    	List<String> response = null;
-            System.out.println("01. -> Sending Command (" + parCommand + ") to the server...");
-            this.send(parCommand.toString());
+    public Object sentCommand(NetworkMessage parNetworkMessage) {
+    	Object response = null;
+            System.out.println("01. -> Sending Command (" + parNetworkMessage + ") to the server...");
+            this.send(parNetworkMessage);
             
             //Pour get list contacts :
             
             try{
-            		response = (List<String>) receive();
+            		response = receive();
                     System.out.println("05. <- The Server responded with: ");
                     System.out.println(" <- " + response);
             }
