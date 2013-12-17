@@ -12,6 +12,14 @@ public class ContactsManager {
 
 	private Map<String, Contact> _registerContacts = new HashMap<String, Contact>();
 
+	
+	public ContactsManager() {
+		//initialization 		
+		_registerContacts.put("John", new Contact("John", "aaa"));
+		_registerContacts.put("Paul", new Contact("Paul", "aaa"));
+		_registerContacts.put("Cil", new Contact("Cil", "aaa"));
+	}
+	
 	public void logInOrCreateUser(Contact parContact) {
 
 		if (_registerContacts.containsKey(parContact.getUserName())) {
