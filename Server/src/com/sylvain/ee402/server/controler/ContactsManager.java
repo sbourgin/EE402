@@ -36,8 +36,8 @@ public class ContactsManager {
 
 	}
 
-	public List<Contact> getListContacts() {
-		List<Contact> locList = new LinkedList<Contact>(_registerContacts.values());
+	public List<String> getListContacts() {
+		List<String> locList = new LinkedList<String>(_registerContacts.keySet());
 		return locList;
 	}
 

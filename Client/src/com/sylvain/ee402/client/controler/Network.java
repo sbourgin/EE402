@@ -51,7 +51,7 @@ public class Network {
     public Object sentCommand(Commands parCommand) {
     	List<Contact> response = null;
             System.out.println("01. -> Sending Command (" + parCommand + ") to the server...");
-            this.send(parCommand);
+            this.send(parCommand.toString());
             
             //Pour get list contacts :
             

@@ -16,7 +16,7 @@ public class Services {
 	
 	
 	
-	public List<Contact> getListContacts() {
+	public List<String> getListContacts() {
 		return _contactsManager.getListContacts();
 	}
 	

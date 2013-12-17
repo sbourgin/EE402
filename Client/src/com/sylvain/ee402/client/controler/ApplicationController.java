@@ -36,9 +36,9 @@ public class ApplicationController {
 		return _logInContact;
 	}
 
-	public List<Contact> getListContacts() {
-
-		return (List<Contact>) _network.sentCommand(Commands.GET_LIST_CONTACTS);
+	public List<String> getListContacts() {
+		List<String> locContacts = (List<String>) _network.sentCommand(Commands.GET_LIST_CONTACTS);
+		return locContacts;
 	}
 
 }

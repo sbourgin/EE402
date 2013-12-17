@@ -65,7 +65,7 @@ public class ThreadedConnectionHandler extends Thread
 
     // Use our custom DateTimeService Class to get the date and time
     private void getListContacts() {        // use the date service to get the date
-        List<Contact> locContacts = _services.getListContacts();
+        List<String> locContacts = _services.getListContacts();
         this.send(locContacts);
     }
 
