@@ -1,10 +1,14 @@
 package com.sylvain.ee402.client.controler;
 
+import java.util.List;
+
+import com.sylvain.ee402.client.common.Commands;
 import com.sylvain.ee402.client.model.Contact;
 
 public class ApplicationController {
 	private static volatile ApplicationController _instance = null;
 	private Contact _logInContact;
+	private Network _network = new Network();
 
 	private ApplicationController() {
 
@@ -23,13 +27,18 @@ public class ApplicationController {
 
 	// TODO
 	public boolean logIn(Contact parContact) {
-		
-		//TODO Appel WebService pour checker si ok Contact logInOrCreateUser
+
+		// TODO Appel WebService pour checker si ok Contact logInOrCreateUser
 		return true;
 	}
 
 	public Contact getLogInContact() {
 		return _logInContact;
+	}
+
+	public List<Contact> getListContacts() {
+
+		return (List<Contact>) _network.sentCommand(Commands.GET_LIST_CONTACTS);
 	}
 
 }

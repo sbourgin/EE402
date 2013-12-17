@@ -37,12 +37,12 @@ public class CreateMessage extends JFrame {
 		_JFrameBack = parJFrameBack;
 
 		JLabel _to = new JLabel("To");
-		final JComboBox _contacts = new JComboBox(Importance.values()); //TODO Appel WS list contacts getListContacts
+		final JComboBox _contacts = new JComboBox(ApplicationController.getInstance().getListContacts().toArray()); //TODO Appel WS list contacts getListContacts
 		JLabel _importanceLabel = new JLabel("Importance");
 		
 		final JComboBox _importanceSelector = new JComboBox(Importance.values());
 		
-		
+		//TODO ajouter bouton revenir en arrière si on veut plus envoyer message (cancell)
 		JPanel locControls = new JPanel(new FlowLayout());
 		locControls.add(_to);
 		locControls.add(_contacts);
