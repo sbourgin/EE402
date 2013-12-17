@@ -2,5 +2,6 @@ package com.sylvain.ee402.common.model;
 
 public enum Commands {
 	GET_LIST_CONTACTS,
-	SEND_MESSAGE;
+	SEND_MESSAGE,
+	LOG_IN_OR_REGISTER;
 }

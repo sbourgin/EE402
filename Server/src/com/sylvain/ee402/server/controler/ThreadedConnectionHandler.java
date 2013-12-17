@@ -13,6 +13,7 @@ import java.util.List;
 import com.sylvain.ee402.common.model.Commands;
 import com.sylvain.ee402.common.model.Message;
 import com.sylvain.ee402.common.model.NetworkMessage;
+import com.sylvain.ee402.common.model.SimplifiedContact;
 
 public class ThreadedConnectionHandler extends Thread
 {
@@ -61,10 +62,17 @@ public class ThreadedConnectionHandler extends Thread
             this.getListContacts();
         } else if (s.getCommand().equals(Commands.SEND_MESSAGE)) {
         	this.sendMessage((Message) s.getMessage());
+        } else if (s.getCommand().equals(Commands.LOG_IN_OR_REGISTER)) {
+        	this.logInOrRegister((SimplifiedContact) s.getMessage());
         } else {
             this.sendError("Invalid command: " + s);
         }
         return true;
+    }
+    
+    private void logInOrRegister(SimplifiedContact parSimplifiedContact){
+    	_services.logInOrRegister(parSimplifiedContact);
+    	this.send(new Boolean(true));
     }
 
     private void getListContacts() {        

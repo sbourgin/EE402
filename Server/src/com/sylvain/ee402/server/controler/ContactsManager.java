@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Map;
 
 import com.sylvain.ee402.common.model.Message;
+import com.sylvain.ee402.common.model.SimplifiedContact;
 import com.sylvain.ee402.server.model.Contact;
 
 public class ContactsManager {
@@ -20,17 +21,15 @@ public class ContactsManager {
 		_registerContacts.put("Cil", new Contact("Cil", "aaa"));
 	}
 	
-	public void logInOrCreateUser(Contact parContact) {
+	public void logInOrCreateUser(SimplifiedContact parSimplifiedContact) {
 
-		if (_registerContacts.containsKey(parContact.getUserName())) {
-			_registerContacts.get(parContact).setIsLogged(true);
+		if (_registerContacts.containsKey(parSimplifiedContact.getUserName())) {
+			_registerContacts.get(parSimplifiedContact).setIsLogged(true);
 			return;
 		}
 
-		
-		// The user doesn't exist
-		
-		_registerContacts.put(parContact.getUserName(), parContact); // TODO Attention pas le même type de
+		// The user doesn't exist		
+		_registerContacts.put(parSimplifiedContact.getUserName(), new Contact(parSimplifiedContact.getUserName(), parSimplifiedContact.getPassword())); // TODO Attention pas le même type de
 											// contact
 		return;
 
