@@ -23,14 +23,10 @@ import com.sylvain.ee402.common.model.NetworkMessage;
 public class CreateMessage extends JFrame {
 
 	/**
-	 * 	private String _message;
-	private Contact _destination;
+	 * private String _message; private Contact _destination;
 	 */
-	
-	
-	
+
 	private JFrame _JFrameBack;
-	private JTextField _LOL;
 	private JButton _submitButton;
 	private JTextArea _textArea;
 
@@ -38,50 +34,48 @@ public class CreateMessage extends JFrame {
 		_JFrameBack = parJFrameBack;
 
 		JLabel _to = new JLabel("To");
-		final JComboBox _contacts = new JComboBox(ApplicationController.getInstance().getListContacts().toArray()); //TODO Appel WS list contacts getListContacts
+		final JComboBox _contacts = new JComboBox(ApplicationController
+				.getInstance().getListContacts().toArray()); 
 		JLabel _importanceLabel = new JLabel("Importance");
-		
+
 		final JComboBox _importanceSelector = new JComboBox(Importance.values());
-		
-		//TODO ajouter bouton revenir en arrière si on veut plus envoyer message (cancell)
+
+		// TODO ajouter bouton revenir en arrière si on veut plus envoyer
+		// message (cancell)
 		JPanel locControls = new JPanel(new FlowLayout());
 		locControls.add(_to);
 		locControls.add(_contacts);
 		locControls.add(_importanceLabel);
 		locControls.add(_importanceSelector);
-		
-		
-        _textArea = new JTextArea(20,40);
-        JScrollPane locMessageWriting = new JScrollPane(_textArea,
-                       JScrollPane.VERTICAL_SCROLLBAR_ALWAYS,
-                       JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
-        _textArea.setWrapStyleWord(true);
-		
-		
-		
+
+		_textArea = new JTextArea(20, 40);
+		JScrollPane locMessageWriting = new JScrollPane(_textArea,
+				JScrollPane.VERTICAL_SCROLLBAR_ALWAYS,
+				JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
+		_textArea.setWrapStyleWord(true);
+
 		_submitButton = new JButton("Submit");
 		_submitButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				setVisible(false);
 				_JFrameBack.setVisible(true);
-	
-				
-				Message locMessage = new Message(_textArea.getText(), System.currentTimeMillis(),
-						ApplicationController.getInstance().getLogInUserName(), (String) _contacts.getSelectedItem(), (Importance)_importanceSelector.getSelectedItem());
-				
 
-				
+				Message locMessage = new Message(_textArea.getText(), System
+						.currentTimeMillis(), ApplicationController
+						.getInstance().getLogInUserName(), (String) _contacts
+						.getSelectedItem(), (Importance) _importanceSelector
+						.getSelectedItem());
+
 				ApplicationController.getInstance().sentMessage(locMessage);
-				//TODO appel WS svg message + popup ça a marché ? sendMessage
+
 			}
 
 		});
-		
-		
-		this.getContentPane().add("North",locControls);
-		this.getContentPane().add("Center",locMessageWriting);
-		this.getContentPane().add("South",_submitButton);		
-		
+
+		this.getContentPane().add("North", locControls);
+		this.getContentPane().add("Center", locMessageWriting);
+		this.getContentPane().add("South", _submitButton);
+
 		this.pack();
 		this.setVisible(true);
 	}

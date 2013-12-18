@@ -8,6 +8,6 @@ public class ClientMessage {
 		
 		Application locApplication = new Application();
 		
-
 	}
 }
+//TODO check si plusieurs clients peuvent se connecter à la fois

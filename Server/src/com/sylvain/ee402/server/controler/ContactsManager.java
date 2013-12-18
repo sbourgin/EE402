@@ -50,6 +50,14 @@ public class ContactsManager {
 		
 	}
 
+	public List<Message> getInboxMessages(String parUserName) {
+		return _registerContacts.get(parUserName).getAllMessagesInInbox();
+	}
+
+	public List<Message> getSentMessages(String parUserName) {
+		return _registerContacts.get(parUserName).getAllMessagesInSendBox();
+	}
+
 	/*
 	 * public boolean logonContact(Contact parContact) { // check si on utilise
 	 * bien l'equal car sinon les deux objets sont // différents

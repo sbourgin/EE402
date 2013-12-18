@@ -55,4 +55,14 @@ public class ApplicationController {
 
 	}
 
+	public List<Message> getInboxMessages() {
+		NetworkMessage locNetworkMessage = new NetworkMessage( Commands.GET_INBOX_MESSAGES, getLogInUserName());
+		return (List<Message>) _network.sentCommand(locNetworkMessage);
+	}
+
+	public List<Message> getSentMessages() {
+		NetworkMessage locNetworkMessage = new NetworkMessage( Commands.GET_SENTBOX_MESSAGES, getLogInUserName());
+		return (List<Message>) _network.sentCommand(locNetworkMessage);		
+	}
+
 }

@@ -64,10 +64,25 @@ public class ThreadedConnectionHandler extends Thread
         	this.sendMessage((Message) s.getMessage());
         } else if (s.getCommand().equals(Commands.LOG_IN_OR_REGISTER)) {
         	this.logInOrRegister((SimplifiedContact) s.getMessage());
+        } else if (s.getCommand().equals(Commands.GET_INBOX_MESSAGES))  {
+        	this.getInboxMessages((String) s.getMessage());
+        } else if (s.getCommand().equals(Commands.GET_SENTBOX_MESSAGES)) {
+        	this.getSentMessages((String) s.getMessage()); 
         } else {
             this.sendError("Invalid command: " + s);
         }
         return true;
+    }
+    
+    
+    private void getInboxMessages(String parUserName) {
+    	List<Message> locMessages = _services.getInboxMessages(parUserName);
+    	this.send(locMessages);
+    }
+    
+    private void getSentMessages(String parUserName) {
+    	List<Message> locMessages = _services.getSentMessages(parUserName);
+    	this.send(locMessages);
     }
     
     private void logInOrRegister(SimplifiedContact parSimplifiedContact){
