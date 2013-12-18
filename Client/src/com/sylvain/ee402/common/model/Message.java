@@ -43,5 +43,5 @@ public class Message implements Serializable {
 	public Importance getImportance() {
 		return _importance;
 	}
-
+//TODO override tostring
 }
