@@ -13,7 +13,7 @@ import javax.swing.JTextField;
 import com.sylvain.ee402.client.controler.ApplicationController;
 
 @SuppressWarnings("serial")
-public class Application extends JFrame {
+public class Application extends JFrame implements ActionListener{
 
 	private JTextField _userName;
 	private JTextField _passWord;
@@ -27,16 +27,7 @@ public class Application extends JFrame {
 		_userName = new JTextField("Enter your username");
 		_passWord = new JTextField("Enter your password ");
 		_signInButton = new JButton("Sign In");
-		_signInButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				
-				if(ApplicationController.getInstance().logIn(_userName.getText(), _passWord.getText())) {
-					setVisible(false);
-					new Menu();
-				}
-				_message.setText("Your login/password is incorrect");
-			}
-		});
+		_signInButton.addActionListener(this);
 		
 		this.setLayout(new GridLayout(4, 1));
 		this.getContentPane().add(_message);
@@ -54,6 +45,16 @@ public class Application extends JFrame {
 		
 		this.pack();
 		this.setVisible(true);
+	}
+
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		if(ApplicationController.getInstance().logIn(_userName.getText(), _passWord.getText())) {
+			setVisible(false);
+			new ReadMessage(this);
+		}
+		_message.setText("Your login/password is incorrect");
+		
 	}
 
 }

@@ -71,6 +71,8 @@ public class ThreadedConnectionHandler extends Thread
         } else if(s.getCommand().equals(Commands.CLOSE_CONNEXION)) {
         	this.closeConnexion((String) s.getMessage());
         	return false;
+        } else if(s.getCommand().equals(Commands.LOG_OUT)) {
+        	this.logOut((String) s.getMessage());
         } else {
             this.sendError("Invalid command: " + s);
         }
@@ -78,7 +80,14 @@ public class ThreadedConnectionHandler extends Thread
     }
     
     
-    private void closeConnexion(String parUserName) {
+    private void logOut(String parUserName) {
+    	if(parUserName != null) {
+    		_services.logOutUser(parUserName);
+    	}
+    	this.send(new Boolean(true));
+	}
+
+	private void closeConnexion(String parUserName) {
     	if(parUserName != null) {
     		_services.logOutUser(parUserName);
     	}

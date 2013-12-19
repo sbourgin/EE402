@@ -15,6 +15,8 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 
+import org.omg.CORBA._PolicyStub;
+
 import com.sylvain.ee402.client.controler.ApplicationController;
 import com.sylvain.ee402.common.model.Message;
 
@@ -27,6 +29,7 @@ public class ReadMessage extends JFrame implements ActionListener{
 	private JTextArea _messagesArea;
 	private JLabel _message;
 	private JButton _composeMessageButton;
+	private JButton _logOutButton;
 	
 	public ReadMessage(JFrame parJFrameBack) {
 		_JFrameBack = parJFrameBack;
@@ -35,10 +38,23 @@ public class ReadMessage extends JFrame implements ActionListener{
 		_message = new JLabel("Inbox of " + ApplicationController.getInstance().getLogInUserName());
 		_composeMessageButton = new JButton("Compose a new message");
 		_composeMessageButton.addActionListener(this);
+		_logOutButton = new JButton("Log Out");
+		_logOutButton.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				
+				ApplicationController.getInstance().logOut();
+				setVisible(false);
+				_JFrameBack.setVisible(true);
+			}
+			
+		});
 		
 		JPanel locNorth = new JPanel(new FlowLayout());
 		locNorth.add(_message);
 		locNorth.add(_composeMessageButton);
+		locNorth.add(_logOutButton);
 		
 		JPanel locBox = new JPanel(new GridLayout(2,1));
 		_inboxButton = new JButton("Inbox");

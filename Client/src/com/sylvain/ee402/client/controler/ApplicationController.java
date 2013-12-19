@@ -72,4 +72,10 @@ public class ApplicationController {
 		
 	}
 
+	public void logOut() {
+		NetworkMessage locNetworkMessage = new NetworkMessage(Commands.LOG_OUT, getLogInUserName());
+		_network.sentCommand(locNetworkMessage);
+		
+	}
+
 }
