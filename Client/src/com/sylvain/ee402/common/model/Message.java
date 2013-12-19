@@ -1,6 +1,7 @@
 package com.sylvain.ee402.common.model;
 
 import java.io.Serializable;
+import java.text.SimpleDateFormat;
 
 public class Message implements Serializable {
 
@@ -43,5 +44,20 @@ public class Message implements Serializable {
 	public Importance getImportance() {
 		return _importance;
 	}
-//TODO override tostring
+	
+
+    @Override
+    public String toString() {
+		StringBuilder locString = new StringBuilder();
+		locString.append("Sender : ").append(_sender).append("\nAddressee :").append(_destination);
+			
+		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy h:mm:ss a");
+		String formattedDate = sdf.format(_sendTime);
+		locString.append("\nTime : ").append(formattedDate);
+		locString.append("\nImportance : ").append(_importance.toString());
+		locString.append("\nMessage : \n").append(_message);
+		
+		return locString.toString();
+    }
+
 }

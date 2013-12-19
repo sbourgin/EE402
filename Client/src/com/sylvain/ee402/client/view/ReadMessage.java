@@ -57,7 +57,7 @@ public class ReadMessage extends JFrame {
 		_messagesArea = new JTextArea(20, 40);
 		JScrollPane locMessageViewing = new JScrollPane(_messagesArea,
 				JScrollPane.VERTICAL_SCROLLBAR_ALWAYS,
-				JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
+				JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
 		_messagesArea.setWrapStyleWord(true);
 		_messagesArea.setEditable(false);
 		
@@ -87,7 +87,7 @@ public class ReadMessage extends JFrame {
 		
 		for(Message locMessage:locMessages) {
 			_messagesArea.append(locMessage.toString());
-			_messagesArea.append("----------------------------------");
+			_messagesArea.append("\n \n \n----------------------------------");
 		}
 		
 	}
