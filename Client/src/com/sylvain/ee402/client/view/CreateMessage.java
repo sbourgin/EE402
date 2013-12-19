@@ -51,8 +51,9 @@ public class CreateMessage extends JFrame {
 		_textArea = new JTextArea(20, 40);
 		JScrollPane locMessageWriting = new JScrollPane(_textArea,
 				JScrollPane.VERTICAL_SCROLLBAR_ALWAYS,
-				JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
+				JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
 		_textArea.setWrapStyleWord(true);
+		_textArea.setLineWrap(true);
 
 		_submitButton = new JButton("Submit");
 		_submitButton.addActionListener(new ActionListener() {

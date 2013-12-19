@@ -90,6 +90,8 @@ public class ReadMessage extends JFrame {
 			_messagesArea.append("\n \n \n----------------------------------");
 		}
 		
+		_messagesArea.setLineWrap(true);
+		
 	}
 	
 
