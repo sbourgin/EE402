@@ -37,4 +37,9 @@ public class Services {
 		return _contactsManager.getSentMessages(parUserName);
 	}
 
+	public void logOutUser(String parUserName) {
+		_contactsManager.logOutUser(parUserName);
+		
+	}
+
 }

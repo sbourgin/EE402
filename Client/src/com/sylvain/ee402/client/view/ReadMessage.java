@@ -3,6 +3,7 @@ package com.sylvain.ee402.client.view;
 import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.WindowEvent;
 import java.util.List;
 
 import javax.swing.JButton;
@@ -67,6 +68,14 @@ public class ReadMessage extends JFrame {
 		
 		this.getContentPane().add("North", locBox); //Mettre est
 		this.getContentPane().add("Center", locMessageViewing);
+		
+		this.setLocationRelativeTo(null);
+		this.addWindowListener(new java.awt.event.WindowAdapter() {
+			public void windowClosing(WindowEvent winEvt) {
+				ApplicationController.getInstance().closeConnexion();
+				System.exit(0);
+			}
+		});
 		
 		this.pack();
 		this.setVisible(true);

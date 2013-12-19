@@ -68,6 +68,9 @@ public class ThreadedConnectionHandler extends Thread
         	this.getInboxMessages((String) s.getMessage());
         } else if (s.getCommand().equals(Commands.GET_SENTBOX_MESSAGES)) {
         	this.getSentMessages((String) s.getMessage()); 
+        } else if(s.getCommand().equals(Commands.CLOSE_CONNEXION)) {
+        	this.closeConnexion((String) s.getMessage());
+        	return false;
         } else {
             this.sendError("Invalid command: " + s);
         }
@@ -75,7 +78,15 @@ public class ThreadedConnectionHandler extends Thread
     }
     
     
-    private void getInboxMessages(String parUserName) {
+    private void closeConnexion(String parUserName) {
+    	if(parUserName != null) {
+    		_services.logOutUser(parUserName);
+    	}
+    	this.send(new Boolean(true));
+		this.closeSocket();	
+	}
+
+	private void getInboxMessages(String parUserName) {
     	List<Message> locMessages = _services.getInboxMessages(parUserName);
     	this.send(locMessages);
     }

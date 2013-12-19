@@ -9,7 +9,7 @@ import com.sylvain.ee402.common.model.SimplifiedContact;
 
 public class ApplicationController {
 	private static volatile ApplicationController _instance = null;
-	private String _logInUserName;
+	private String _logInUserName = null;
 	private Network _network = new Network();
 
 	private ApplicationController() {
@@ -63,6 +63,13 @@ public class ApplicationController {
 	public List<Message> getSentMessages() {
 		NetworkMessage locNetworkMessage = new NetworkMessage( Commands.GET_SENTBOX_MESSAGES, getLogInUserName());
 		return (List<Message>) _network.sentCommand(locNetworkMessage);		
+	}
+
+	public void closeConnexion() {
+		NetworkMessage locNetworkMessage = new NetworkMessage(Commands.CLOSE_CONNEXION, getLogInUserName());
+		_network.sentCommand(locNetworkMessage);
+		_network.closeSocket();
+		
 	}
 
 }

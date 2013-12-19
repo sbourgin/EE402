@@ -7,6 +7,7 @@ package com.sylvain.ee402.client.controler;
 */
 
 
+import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.Socket;
@@ -53,8 +54,6 @@ public class Network {
             System.out.println("01. -> Sending Command (" + parNetworkMessage + ") to the server...");
             this.send(parNetworkMessage);
             
-            //Pour get list contacts :
-            
             try{
             		response = receive();
                     System.out.println("05. <- The Server responded with: ");
@@ -93,6 +92,15 @@ public class Network {
                  System.out.println("XX. Exception Occurred on Receiving:" + e.toString());
                 }
                 return o;
+    }
+    
+    public void closeSocket() {
+    	try {
+			socket.close();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
     }
 
 

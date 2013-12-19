@@ -3,6 +3,7 @@ package com.sylvain.ee402.client.view;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.WindowEvent;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -43,6 +44,14 @@ public class Application extends JFrame {
 		this.getContentPane().add(_passWord);
 		this.getContentPane().add(_signInButton);
 
+		this.setLocationRelativeTo(null);
+		this.addWindowListener(new java.awt.event.WindowAdapter() {
+			public void windowClosing(WindowEvent winEvt) {
+				ApplicationController.getInstance().closeConnexion();
+				System.exit(0);
+			}
+		});
+		
 		this.pack();
 		this.setVisible(true);
 	}

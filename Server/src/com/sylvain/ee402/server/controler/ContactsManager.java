@@ -62,6 +62,13 @@ public class ContactsManager {
 		return _registerContacts.get(parUserName).getAllMessagesInSendBox();
 	}
 
+	public void logOutUser(String parUserName) {
+		if(_registerContacts.containsKey(parUserName)) {
+			_registerContacts.get(parUserName).setIsLogged(false);
+		}
+		
+	}
+
 	/*
 	 * public boolean logonContact(Contact parContact) { // check si on utilise
 	 * bien l'equal car sinon les deux objets sont // différents
