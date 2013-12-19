@@ -24,8 +24,8 @@ public class Services {
 
 	}
 
-	public void logInOrRegister(SimplifiedContact parSimplifiedContact) {
-		_contactsManager.logInOrCreateUser(parSimplifiedContact);
+	public Boolean logInOrRegister(SimplifiedContact parSimplifiedContact) {
+		return _contactsManager.logInOrCreateUser(parSimplifiedContact);
 
 	}
 

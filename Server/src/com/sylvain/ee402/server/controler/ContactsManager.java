@@ -21,17 +21,21 @@ public class ContactsManager {
 		_registerContacts.put("Cil", new Contact("Cil", "aaa"));
 	}
 	
-	public void logInOrCreateUser(SimplifiedContact parSimplifiedContact) {
+	public Boolean logInOrCreateUser(SimplifiedContact parSimplifiedContact) {
 
 		if (_registerContacts.containsKey(parSimplifiedContact.getUserName())) {
-			_registerContacts.get(parSimplifiedContact).setIsLogged(true);
-			return;
+			if(_registerContacts.get(parSimplifiedContact.getUserName()).get_password().equals(parSimplifiedContact.getPassword())) {
+				_registerContacts.get(parSimplifiedContact.getUserName()).setIsLogged(true);
+				return (new Boolean(true));
+			}
+			return (new Boolean(false));
+			
 		}
 
 		// The user doesn't exist		
 		_registerContacts.put(parSimplifiedContact.getUserName(), new Contact(parSimplifiedContact.getUserName(), parSimplifiedContact.getPassword())); // TODO Attention pas le même type de
 											// contact
-		return;
+		return (new Boolean(true));
 
 	}
 

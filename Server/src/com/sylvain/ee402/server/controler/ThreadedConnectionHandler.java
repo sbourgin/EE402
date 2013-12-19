@@ -86,8 +86,8 @@ public class ThreadedConnectionHandler extends Thread
     }
     
     private void logInOrRegister(SimplifiedContact parSimplifiedContact){
-    	_services.logInOrRegister(parSimplifiedContact);
-    	this.send(new Boolean(true));
+    	Boolean locAnswer = _services.logInOrRegister(parSimplifiedContact);
+    	this.send(locAnswer);
     }
 
     private void getListContacts() {        

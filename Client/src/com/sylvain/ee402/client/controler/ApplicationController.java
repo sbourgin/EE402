@@ -27,7 +27,7 @@ public class ApplicationController {
 		return _instance;
 	}
 
-	public boolean logIn(String parUserName, String parPassword) {
+	public Boolean logIn(String parUserName, String parPassword) {
 
 		_logInUserName = parUserName;
 		SimplifiedContact locSimplifiedContact = new SimplifiedContact(parUserName, parPassword);
