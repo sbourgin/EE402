@@ -12,13 +12,10 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
-import javax.swing.JTextField;
 
 import com.sylvain.ee402.client.controler.ApplicationController;
-import com.sylvain.ee402.common.model.Commands;
 import com.sylvain.ee402.common.model.Importance;
 import com.sylvain.ee402.common.model.Message;
-import com.sylvain.ee402.common.model.NetworkMessage;
 
 @SuppressWarnings("serial")
 public class CreateMessage extends JFrame {
@@ -30,6 +27,7 @@ public class CreateMessage extends JFrame {
 	private JFrame _JFrameBack;
 	private JButton _submitButton;
 	private JTextArea _textArea;
+	private JButton _cancelButton;
 
 	public CreateMessage(JFrame parJFrameBack) {
 		_JFrameBack = parJFrameBack;
@@ -73,10 +71,24 @@ public class CreateMessage extends JFrame {
 			}
 
 		});
+		_cancelButton = new JButton("Cancel");
+		_cancelButton.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				setVisible(false);
+				_JFrameBack.setVisible(true);			
+			}
+			
+		});
+		
+		JPanel locActions = new JPanel(new FlowLayout());
+		locActions.add(_submitButton);
+		locActions.add(_cancelButton);
+		
 
 		this.getContentPane().add("North", locControls);
 		this.getContentPane().add("Center", locMessageWriting);
-		this.getContentPane().add("South", _submitButton);
+		this.getContentPane().add("South", locActions);
 
 		this.setLocationRelativeTo(null);
 		this.addWindowListener(new java.awt.event.WindowAdapter() {

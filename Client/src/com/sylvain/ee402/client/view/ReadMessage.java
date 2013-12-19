@@ -1,6 +1,8 @@
 package com.sylvain.ee402.client.view;
 
+import java.awt.BorderLayout;
 import java.awt.FlowLayout;
+import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowEvent;
@@ -8,27 +10,37 @@ import java.util.List;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 
 import com.sylvain.ee402.client.controler.ApplicationController;
-import com.sylvain.ee402.common.model.Importance;
 import com.sylvain.ee402.common.model.Message;
 
 @SuppressWarnings("serial")
-public class ReadMessage extends JFrame {
+public class ReadMessage extends JFrame implements ActionListener{
 
 	private JFrame _JFrameBack;
 	private JButton _inboxButton;
 	private JButton _sendboxButton;
 	private JTextArea _messagesArea;
-	
+	private JLabel _message;
+	private JButton _composeMessageButton;
 	
 	public ReadMessage(JFrame parJFrameBack) {
 		_JFrameBack = parJFrameBack;
 
-		JPanel locBox = new JPanel(new FlowLayout());
+		
+		_message = new JLabel("Inbox of " + ApplicationController.getInstance().getLogInUserName());
+		_composeMessageButton = new JButton("Compose a new message");
+		_composeMessageButton.addActionListener(this);
+		
+		JPanel locNorth = new JPanel(new FlowLayout());
+		locNorth.add(_message);
+		locNorth.add(_composeMessageButton);
+		
+		JPanel locBox = new JPanel(new GridLayout(2,1));
 		_inboxButton = new JButton("Inbox");
 		_sendboxButton = new JButton("Sendbox");
 		
@@ -36,6 +48,7 @@ public class ReadMessage extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				_sendboxButton.setSelected(false);
 				_inboxButton.setSelected(true);
+				_message.setText("Inbox of " + ApplicationController.getInstance().getLogInUserName());
 				fillMessageArea(true);
 			}
 
@@ -45,6 +58,7 @@ public class ReadMessage extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				_sendboxButton.setSelected(true);
 				_inboxButton.setSelected(false);
+				_message.setText("Sendbox of " + ApplicationController.getInstance().getLogInUserName());
 				fillMessageArea(false);
 			}
 
@@ -65,9 +79,12 @@ public class ReadMessage extends JFrame {
 		
 		_inboxButton.setSelected(true);		
 		fillMessageArea(true);
+		BorderLayout locLayout = new BorderLayout(2,2);
 		
-		this.getContentPane().add("North", locBox); //Mettre est
-		this.getContentPane().add("Center", locMessageViewing);
+		this.setLayout(locLayout);
+		this.getContentPane().add(locNorth, BorderLayout.NORTH);
+		this.getContentPane().add(locBox, BorderLayout.WEST);
+		this.getContentPane().add(locMessageViewing, BorderLayout.CENTER);
 		
 		this.setLocationRelativeTo(null);
 		this.addWindowListener(new java.awt.event.WindowAdapter() {
@@ -101,6 +118,13 @@ public class ReadMessage extends JFrame {
 		
 		_messagesArea.setLineWrap(true);
 		
+	}
+
+
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		this.setVisible(false);
+		new CreateMessage(this);
 	}
 	
 
