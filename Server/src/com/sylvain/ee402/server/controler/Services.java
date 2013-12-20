@@ -8,10 +8,23 @@ import com.sylvain.ee402.common.model.SimplifiedContact;
 public class Services {
 
 	private ContactsManager _contactsManager;
-
-	public Services() {
+	private static volatile Services _instance = null;
+	
+	private Services() {
 		_contactsManager = new ContactsManager();
 
+	}
+	
+
+	public final static Services getInstance() {
+		if (_instance == null) {
+			synchronized (Services.class) {
+				if (_instance == null) {
+					_instance = new Services();
+				}
+			}
+		}
+		return _instance;
 	}
 
 	public List<String> getListContacts() {

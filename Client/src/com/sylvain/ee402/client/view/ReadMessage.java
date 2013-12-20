@@ -8,14 +8,13 @@ import java.awt.event.ActionListener;
 import java.awt.event.WindowEvent;
 import java.util.List;
 
+import javax.swing.AbstractButton;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
-
-import org.omg.CORBA._PolicyStub;
 
 import com.sylvain.ee402.client.controler.ApplicationController;
 import com.sylvain.ee402.common.model.Message;
@@ -30,12 +29,28 @@ public class ReadMessage extends JFrame implements ActionListener{
 	private JLabel _message;
 	private JButton _composeMessageButton;
 	private JButton _logOutButton;
+	private JButton _refreshButton;
 	
 	public ReadMessage(JFrame parJFrameBack) {
 		_JFrameBack = parJFrameBack;
 
 		
 		_message = new JLabel("Inbox of " + ApplicationController.getInstance().getLogInUserName());
+		_refreshButton = new JButton("Refresh");
+		_refreshButton.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				if(_inboxButton.isSelected()) {
+					fillMessageArea(true);
+				} else {
+					fillMessageArea(false);
+				}
+			}
+			
+		});
+		
+		
 		_composeMessageButton = new JButton("Compose a new message");
 		_composeMessageButton.addActionListener(this);
 		_logOutButton = new JButton("Log Out");
@@ -53,6 +68,7 @@ public class ReadMessage extends JFrame implements ActionListener{
 		
 		JPanel locNorth = new JPanel(new FlowLayout());
 		locNorth.add(_message);
+		locNorth.add(_refreshButton);
 		locNorth.add(_composeMessageButton);
 		locNorth.add(_logOutButton);
 		

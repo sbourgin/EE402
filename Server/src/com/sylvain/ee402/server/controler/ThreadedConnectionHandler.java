@@ -25,7 +25,7 @@ public class ThreadedConnectionHandler extends Thread
         // The constructor for the connection handler
     public ThreadedConnectionHandler(Socket clientSocket) {
         this.clientSocket = clientSocket;
-        _services = new Services();
+        _services = Services.getInstance();
        
     }
 
