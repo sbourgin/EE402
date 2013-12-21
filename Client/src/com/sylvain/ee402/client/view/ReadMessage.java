@@ -145,7 +145,7 @@ public class ReadMessage extends JFrame implements ActionListener{
 		
 		for(Message locMessage:locMessages) {
 			_messagesArea.append(locMessage.toString());
-			_messagesArea.append("\n \n \n----------------------------------");
+			_messagesArea.append("\n \n \n----------------------------------\n");
 		}
 		
 		_messagesArea.setLineWrap(true);
