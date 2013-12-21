@@ -11,3 +11,4 @@ public class ClientMessage {
 	}
 }
 //TODO check si plusieurs clients peuvent se connecter à la fois
+//Add refresh inbox quand on revient du compose message

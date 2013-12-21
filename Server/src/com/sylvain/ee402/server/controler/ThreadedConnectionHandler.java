@@ -126,6 +126,7 @@ public class ThreadedConnectionHandler extends Thread
             System.out.println("02. -> Sending (" + o +") to the client.");
             this.os.writeObject(o);
             this.os.flush();
+            os.reset();
         }
         catch (Exception e) {
             System.out.println("XX." + e.getStackTrace());
