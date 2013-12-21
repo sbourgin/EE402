@@ -76,7 +76,7 @@ public class CreateMessage extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				setVisible(false);
-				_JFrameBack.setVisible(true);			
+				_JFrameBack.setVisible(true);	
 			}
 			
 		});
