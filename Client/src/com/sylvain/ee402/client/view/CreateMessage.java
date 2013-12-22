@@ -39,8 +39,6 @@ public class CreateMessage extends JFrame {
 
 		final JComboBox _importanceSelector = new JComboBox(Importance.values());
 
-		// TODO ajouter bouton revenir en arrière si on veut plus envoyer
-		// message (cancell)
 		JPanel locControls = new JPanel(new FlowLayout());
 		locControls.add(_to);
 		locControls.add(_contacts);

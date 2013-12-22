@@ -9,10 +9,12 @@ public class Services {
 
 	private ContactsManager _contactsManager;
 	private static volatile Services _instance = null;
+	private LEDController _ledController;
+	
 	
 	private Services() {
 		_contactsManager = new ContactsManager();
-
+		_ledController = new LEDController();
 	}
 	
 
@@ -32,7 +34,8 @@ public class Services {
 	}
 
 	public void sendMessage(Message parMessage) {
-		// TODO Ajouter qqpart la gestion des leds
+		int locLedId = _contactsManager.getLedId(parMessage.get_destination());
+		_ledController.startFlashLed(locLedId, parMessage.getImportance());
 		_contactsManager.sendMessage(parMessage);
 
 	}
@@ -43,7 +46,9 @@ public class Services {
 	}
 
 	public List<Message> getInboxMessages(String parUserName) {
+		_ledController.stopFlashLed(_contactsManager.getLedId(parUserName));
 		return _contactsManager.getInboxMessages(parUserName);
+		
 	}
 
 	public List<Message> getSentMessages(String parUserName) {
@@ -54,5 +59,8 @@ public class Services {
 		_contactsManager.logOutUser(parUserName);
 		
 	}
+
+	
+
 
 }

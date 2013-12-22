@@ -7,16 +7,20 @@ import com.sylvain.ee402.common.model.Message;
 
 public class Contact {
 
+	static private int id = 0;
+	
 	private String _userName;
 	private String _password;
 	private boolean _isLogged = false;
 	private List<Message> _inbox = new LinkedList<Message>();
 	private List<Message> _sendBox = new LinkedList<Message>();
+	private int _ledId;
 	
 	public Contact(String _userName, String _password) {
 		super();
 		this._userName = _userName;
 		this._password = _password;
+		_ledId = id++;
 	}
 
 	public String get_password() {
@@ -86,6 +90,10 @@ public class Contact {
 
 	public void setIsLogged(boolean _isLogged) {
 		this._isLogged = _isLogged;
+	}
+
+	public int getLedId() {
+		return _ledId;
 	}
 
 	

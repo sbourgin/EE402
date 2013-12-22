@@ -12,7 +12,6 @@ import com.sylvain.ee402.server.model.Contact;
 public class ContactsManager {
 
 	private Map<String, Contact> _registerContacts = new HashMap<String, Contact>();
-
 	
 	public ContactsManager() {
 		//initialization 		
@@ -33,8 +32,8 @@ public class ContactsManager {
 		}
 
 		// The user doesn't exist		
-		_registerContacts.put(parSimplifiedContact.getUserName(), new Contact(parSimplifiedContact.getUserName(), parSimplifiedContact.getPassword())); // TODO Attention pas le même type de
-											// contact
+		_registerContacts.put(parSimplifiedContact.getUserName(), new Contact(parSimplifiedContact.getUserName(), parSimplifiedContact.getPassword()));
+											
 		return (new Boolean(true));
 
 	}
@@ -68,30 +67,9 @@ public class ContactsManager {
 		}
 		
 	}
-
-	/*
-	 * public boolean logonContact(Contact parContact) { // check si on utilise
-	 * bien l'equal car sinon les deux objets sont // différents
-	 * 
-	 * if(_registerContacts.contains(parContact)) { int locIndex =
-	 * _registerContacts.indexOf(parContact); Contact locContact =
-	 * _registerContacts.get(locIndex); locContact.setIsLogged(true); }
-	 * 
-	 * return (_registerContacts.contains(parContact));
-	 * 
-	 * }
-	 * 
-	 * public Contact loginContact(Contact parContact) { if
-	 * (_registerContacts.add(parContact)) { return parContact; } else { return
-	 * null; } }
-	 * 
-	 * public void logOutContact(Contact parContact) {
-	 * if(_registerContacts.contains(parContact)) { int locIndex =
-	 * _registerContacts.indexOf(parContact); Contact locContact =
-	 * _registerContacts.get(locIndex); locContact.setIsLogged(false); }
-	 * 
-	 * 
-	 * }
-	 */
+	
+	public int getLedId(String parUserName) {
+		return _registerContacts.get(parUserName).getLedId();
+	}
 
 }
