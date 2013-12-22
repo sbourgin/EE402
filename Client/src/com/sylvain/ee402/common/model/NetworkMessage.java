@@ -2,11 +2,12 @@ package com.sylvain.ee402.common.model;
 
 import java.io.Serializable;
 
+/**
+ * Message send over a socket between a client and a server
+ */
 public class NetworkMessage implements Serializable{
 
-	/**
-	 * 
-	 */
+
 	private static final long serialVersionUID = 3721328881253197529L;
 	private Commands _command;
 	private Object _message;

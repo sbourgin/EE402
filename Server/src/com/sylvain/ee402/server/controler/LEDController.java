@@ -2,6 +2,11 @@ package com.sylvain.ee402.server.controler;
 
 import com.sylvain.ee402.common.model.Importance;
 
+/**
+ * Led controller, allow to blink or stop a Led with generic methods
+ * @author sylvain
+ *
+ */
 public class LEDController {
 
 	

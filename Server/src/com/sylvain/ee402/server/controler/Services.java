@@ -5,6 +5,13 @@ import java.util.List;
 import com.sylvain.ee402.common.model.Message;
 import com.sylvain.ee402.common.model.SimplifiedContact;
 
+
+/**
+ * Service Layer, 
+ * Use the services provided by the contact manager and the led controller
+ * @author sylvain
+ *
+ */
 public class Services {
 
 	private ContactsManager _contactsManager;

@@ -15,6 +15,11 @@ import com.sylvain.ee402.common.model.Message;
 import com.sylvain.ee402.common.model.NetworkMessage;
 import com.sylvain.ee402.common.model.SimplifiedContact;
 
+/**
+ * Thread handle connection with one client
+ * @author sylvain
+ *
+ */
 public class ThreadedConnectionHandler extends Thread
 {
     private Socket clientSocket = null;                                // Client socket object

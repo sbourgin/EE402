@@ -5,7 +5,7 @@ import java.io.Serializable;
 public class Message implements Serializable {
 
 	/**
-	 * 
+	 * Message (send between contacts)
 	 */
 	private static final long serialVersionUID = -4442908046273373672L;
 	private String _message;

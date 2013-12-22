@@ -7,6 +7,11 @@ import com.sylvain.ee402.common.model.Message;
 import com.sylvain.ee402.common.model.NetworkMessage;
 import com.sylvain.ee402.common.model.SimplifiedContact;
 
+/**
+ * Controller of the Client
+ * @author sylvain
+ *
+ */
 public class ApplicationController {
 	private static volatile ApplicationController _instance = null;
 	private String _logInUserName = null;
@@ -15,7 +20,10 @@ public class ApplicationController {
 	private ApplicationController() {
 
 	}
-
+	/**
+	 * Singleton pattern
+	 * @return
+	 */
 	public final static ApplicationController getInstance() {
 		if (_instance == null) {
 			synchronized (ApplicationController.class) {

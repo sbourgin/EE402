@@ -2,6 +2,9 @@ package com.sylvain.ee402.common.model;
 
 import java.io.Serializable;
 
+/**
+ * Message send over a socket between a client and a server
+ */
 public class NetworkMessage implements Serializable{
 
 	/**

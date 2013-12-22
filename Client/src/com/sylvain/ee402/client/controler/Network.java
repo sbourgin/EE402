@@ -11,11 +11,14 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.Socket;
-import java.util.List;
 
-import com.sylvain.ee402.common.model.Commands;
 import com.sylvain.ee402.common.model.NetworkMessage;
 
+/**
+ * Network class to handle the server's connexion
+ * @author sylvain
+ *
+ */
 public class Network {
         
     private static int portNumber = 5050;

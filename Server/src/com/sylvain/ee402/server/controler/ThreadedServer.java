@@ -7,6 +7,11 @@ package com.sylvain.ee402.server.controler;
 import java.net.*;
 import java.io.*;
 
+/**
+ * Threaded server, main class of the server
+ * @author sylvain
+ *
+ */
 public class ThreadedServer
 {
         private static int portNumber = 5050;

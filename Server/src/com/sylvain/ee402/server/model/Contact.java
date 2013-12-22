@@ -5,6 +5,11 @@ import java.util.List;
 
 import com.sylvain.ee402.common.model.Message;
 
+/**
+ * Class Contact, use by the server to define a user
+ * @author sylvain
+ *
+ */
 public class Contact {
 
 	static private int id = 0;

@@ -17,12 +17,13 @@ import com.sylvain.ee402.client.controler.ApplicationController;
 import com.sylvain.ee402.common.model.Importance;
 import com.sylvain.ee402.common.model.Message;
 
+/**
+ * View to create a message
+ * @author sylvain
+ *
+ */
 @SuppressWarnings("serial")
 public class CreateMessage extends JFrame {
-
-	/**
-	 * private String _message; private Contact _destination;
-	 */
 
 	private JFrame _JFrameBack;
 	private JButton _submitButton;

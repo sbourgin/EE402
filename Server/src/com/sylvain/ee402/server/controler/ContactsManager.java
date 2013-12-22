@@ -9,6 +9,11 @@ import com.sylvain.ee402.common.model.Message;
 import com.sylvain.ee402.common.model.SimplifiedContact;
 import com.sylvain.ee402.server.model.Contact;
 
+/**
+ * Manage the users for the server
+ * @author sylvain
+ *
+ */
 public class ContactsManager {
 
 	private Map<String, Contact> _registerContacts = new HashMap<String, Contact>();

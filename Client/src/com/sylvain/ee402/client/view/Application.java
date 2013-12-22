@@ -12,6 +12,11 @@ import javax.swing.JTextField;
 
 import com.sylvain.ee402.client.controler.ApplicationController;
 
+/**
+ * First view of the app, logIn view 
+ * @author sylvain
+ *
+ */
 @SuppressWarnings("serial")
 public class Application extends JFrame implements ActionListener{
 

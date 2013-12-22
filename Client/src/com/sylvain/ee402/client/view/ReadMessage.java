@@ -8,7 +8,6 @@ import java.awt.event.ActionListener;
 import java.awt.event.WindowEvent;
 import java.util.List;
 
-import javax.swing.AbstractButton;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -19,6 +18,13 @@ import javax.swing.JTextArea;
 import com.sylvain.ee402.client.controler.ApplicationController;
 import com.sylvain.ee402.common.model.Message;
 
+
+/**
+ * Main view of the client, display all the messages of the client
+ * Button logout, compose message, refresh
+ * @author sylvain
+ *
+ */
 @SuppressWarnings("serial")
 public class ReadMessage extends JFrame implements ActionListener{
 
@@ -131,7 +137,10 @@ public class ReadMessage extends JFrame implements ActionListener{
 		
 	}
 	
-	
+	/**
+	 * Fill the message area with the messages of the inbox or sendbox of the user
+	 * @param isInboxMessages
+	 */
 	private void fillMessageArea(boolean isInboxMessages) {
 		
 		List<Message> locMessages;
@@ -161,6 +170,3 @@ public class ReadMessage extends JFrame implements ActionListener{
 	
 
 }
-
-// Sur le côté les boutons choix box, en haut logout, compose message
-// millieu textarea avec liste message
