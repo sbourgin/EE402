@@ -24,18 +24,21 @@ public class Application extends JFrame implements ActionListener{
 	private JTextField _passWord;
 	private JButton _signInButton;
 	private JLabel _message;
+	private JTextField _serverIp;
 
 	public Application() {
 
 		super("Sign In");
 		_message = new JLabel("Please LogIn, if your user doesn't exist it will be created");
+		_serverIp = new JTextField("Enter the server Ip");
 		_userName = new JTextField("Enter your username");
 		_passWord = new JTextField("Enter your password ");
 		_signInButton = new JButton("Sign In");
 		_signInButton.addActionListener(this);
 		
-		this.setLayout(new GridLayout(4, 1));
+		this.setLayout(new GridLayout(5, 1));
 		this.getContentPane().add(_message);
+		this.getContentPane().add(_serverIp);
 		this.getContentPane().add(_userName);
 		this.getContentPane().add(_passWord);
 		this.getContentPane().add(_signInButton);
@@ -54,7 +57,7 @@ public class Application extends JFrame implements ActionListener{
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		if(ApplicationController.getInstance().logIn(_userName.getText(), _passWord.getText())) {
+		if(ApplicationController.getInstance().logIn(_serverIp.getText(), _userName.getText(), _passWord.getText())) {
 			setVisible(false);
 			new ReadMessage(this);
 		}

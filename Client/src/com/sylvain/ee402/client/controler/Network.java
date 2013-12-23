@@ -22,13 +22,16 @@ import com.sylvain.ee402.common.model.NetworkMessage;
 public class Network {
         
     private static int portNumber = 5050;
-    private String serverIp = "127.0.0.1"; //TODO faire ça dynamique
+    private String serverIp;
     private Socket socket = null;
     private ObjectOutputStream os = null;
     private ObjectInputStream is = null;
 
         // the constructor expects the IP address of the server - the port is fixed
-    public Network() {
+    public Network(String parServerIp) {
+    	
+    	serverIp = parServerIp;
+    	
             if (!connectToServer()) {
                     System.out.println("XX. Failed to open socket connection to: " + serverIp);
             }

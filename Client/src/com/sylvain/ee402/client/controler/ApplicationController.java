@@ -15,7 +15,7 @@ import com.sylvain.ee402.common.model.SimplifiedContact;
 public class ApplicationController {
 	private static volatile ApplicationController _instance = null;
 	private String _logInUserName = null;
-	private Network _network = new Network();
+	private Network _network = null;
 
 	private ApplicationController() {
 
@@ -35,8 +35,8 @@ public class ApplicationController {
 		return _instance;
 	}
 
-	public Boolean logIn(String parUserName, String parPassword) {
-
+	public Boolean logIn(String parServerIp, String parUserName, String parPassword) {
+		_network = new Network(parServerIp);
 		_logInUserName = parUserName;
 		SimplifiedContact locSimplifiedContact = new SimplifiedContact(parUserName, parPassword);
 		NetworkMessage locNetworkMessage = new NetworkMessage(Commands.LOG_IN_OR_REGISTER, locSimplifiedContact);
