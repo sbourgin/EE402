@@ -1,5 +1,6 @@
 package com.sylvain.ee402.server.controler;
 
+import java.io.IOException;
 import java.util.List;
 
 import com.sylvain.ee402.common.model.Message;
@@ -42,7 +43,11 @@ public class Services {
 
 	public void sendMessage(Message parMessage) {
 		int locLedId = _contactsManager.getLedId(parMessage.get_destination());
-		_ledController.startFlashLed(locLedId, parMessage.getImportance());
+		try {
+			_ledController.startFlashLed(locLedId, parMessage.getImportance());
+		} catch (IOException e) {
+			System.out.println("Led " + locLedId + " fail to blink");
+		}
 		_contactsManager.sendMessage(parMessage);
 
 	}
@@ -53,7 +58,11 @@ public class Services {
 	}
 
 	public List<Message> getInboxMessages(String parUserName) {
-		_ledController.stopFlashLed(_contactsManager.getLedId(parUserName));
+		try {
+			_ledController.stopFlashLed(_contactsManager.getLedId(parUserName));
+		} catch (IOException e) {
+			System.out.println("Led " + _contactsManager.getLedId(parUserName) + " fail to stop blinking");
+		}
 		return _contactsManager.getInboxMessages(parUserName);
 		
 	}
@@ -65,9 +74,7 @@ public class Services {
 	public void logOutUser(String parUserName) {
 		_contactsManager.logOutUser(parUserName);
 		
-	}
-
-	
+	}	
 
 
 }
